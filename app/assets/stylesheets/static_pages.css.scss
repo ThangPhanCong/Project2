@@ -1,0 +1,28 @@
+@import 'bootstrap';
+
+$color-nav: #292b2c;
+$color-a: #fff;
+$color-hover: #f00;
+
+.back-ground {
+  background: url('banner.jpg');
+  height: 100vh;
+}
+
+.bg-faded {
+  background-color: $color-nav;
+}
+
+.nav-link,
+.navbar-light .navbar-brand,
+.navbar-light .navbar-toggler {
+  color: $color-a;
+
+  &:hover {
+    color: $color-hover;
+  }
+}
+
+.formsearch {
+  margin-left: 15px;
+}

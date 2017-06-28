@@ -10,6 +10,9 @@ gem "coffee-rails", "~> 4.2"
 gem "turbolinks", "~> 5"
 gem "jbuilder", "~> 2.5"
 gem "devise"
+gem "bootstrap"
+gem "jquery-rails"
+gem "tether-rails"
 
 group :development do
   gem "web-console", ">= 3.3.0"
@@ -23,6 +26,7 @@ group :development, :test do
   gem "capybara", "~> 2.13"
   gem "selenium-webdriver"
   gem "rspec"
+  gem "rspec-html-matchers"
   gem "rspec-rails"
   gem "rspec-collection_matchers"
   gem "factory_girl_rails"
