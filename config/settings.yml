@@ -1,0 +1,11 @@
+user:
+  name_max: 50
+  email_max: 255
+  min_pass: 6
+post:
+  title_max: 255
+  content_max: 1000
+tag:
+  name_max: 100
+comment:
+  content_max: 150
