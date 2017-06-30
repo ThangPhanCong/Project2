@@ -13,6 +13,10 @@ $color-hover: #f00;
   background-color: $color-nav;
 }
 
+.br-btn {
+  margin-top: 5px;
+}
+
 .nav-link,
 .navbar-light .navbar-brand,
 .navbar-light .navbar-toggler {
@@ -23,6 +27,20 @@ $color-hover: #f00;
   }
 }
 
+.form-control {
+  background-color: rgb(250, 255, 189);
+}
 .formsearch {
   margin-left: 15px;
+}
+
+.form-size {
+  margin: auto;
+}
+
+h5, h1, .field {
+  color: $color-a;
+ }
+.modal-content {
+  background-color: rgba(101, 95, 95, 0.76);
 }

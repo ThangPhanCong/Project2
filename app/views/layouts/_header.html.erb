@@ -21,16 +21,16 @@
 
         <% if user_signed_in? %>
           <div class="nav-item active ">
-            <%= link_to "Logout",  destroy_user_session_path, method: :delete,
+            <%= link_to (image_tag "logout.png"),  destroy_user_session_path, method: :delete,
               class: "nav-link"%>
           </div>
         <% else %>
-          <div class="nav-item active ">
-            <%= link_to (image_tag "signup.png"), "#",class: "nav-link"%>
+          <div class="nav-item active btn_signup ">
+            <%= link_to (image_tag "signup.png"), sign_up_path,class: "nav-link"%>
           </div>
 
-          <div class="nav-item active ">
-            <%= link_to (image_tag "login.png"), "#",class: "nav-link"%>
+          <div class="nav-item active btn_login ">
+            <%= link_to (image_tag "login.png"), sign_in_path,class: "nav-link"%>
           </div>
 
           <div class="nav-item active ">
