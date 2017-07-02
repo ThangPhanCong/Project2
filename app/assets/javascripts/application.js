@@ -15,4 +15,5 @@
 //= require bootstrap
 //= require sweetalert
 //= require rails-ujs
+//= require ckeditor/init
 //= require_tree .

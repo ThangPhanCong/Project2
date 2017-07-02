@@ -1,0 +1,20 @@
+<div class="row feed-post">
+  <div class="col-6 offset-sm-3">
+    <div class="card card-block post-ok">
+      <a href=<%= users_show_path(post.user) %> class="post_user">
+        <span class="name"><%= post.user.name %></span>
+      </a>
+      <h4 class="card-title"><%= post.title %></h4>
+      <%= post.content %>
+
+      <p class="card-text">
+      <span class="timestamp">
+        <%= t ".posted" %> <%= time_ago_in_words(post.created_at) %> <%= t ".ago" %>
+        <% if current_user?(post.user) %>
+          <%= link_to t(".delete"), post, method: :delete,
+            data: { confirm: t(".yousure") }, class: "dele-post" %>
+        <% end %>
+      </span>
+    </div>
+  </div>
+</div>

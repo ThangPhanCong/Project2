@@ -1,1 +1,12 @@
-<div class="back-ground"></div>
+<div class="<%= "back-ground" if !logged_in? %>">
+<% if logged_in? %>
+    <div class="row">
+      <aside class="offset-sm-6">
+        <section class="post_form">
+            <button class="btn btn-outline-secondary" id="status"><%= t ".new_post" %></button>
+        </section>
+      </aside>
+    </div>
+    <%= render "layouts/feed" %>
+  <% end %>
+</div>

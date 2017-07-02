@@ -8,4 +8,9 @@ jQuery(document).ready(function($) {
     event.preventDefault();
     $('#signup').modal('show');
   });
+
+  $('body').on('click', '#status', function(event) {
+    event.preventDefault();
+    $('#newpost').modal('show');
+  });
 });

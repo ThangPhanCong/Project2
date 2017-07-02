@@ -16,4 +16,8 @@ class User < ApplicationRecord
   has_many :followers, through: :passive_relationships, source: :follower
 
   validates :name, presence: true, length: {maximum: Settings.user.name_max}
+
+  def feed
+    posts
+  end
 end

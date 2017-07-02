@@ -4,3 +4,5 @@ en:
       user: "Users"
       signup: "Signup"
       login: "Login"
+    post_form:
+      create: "Create Post"

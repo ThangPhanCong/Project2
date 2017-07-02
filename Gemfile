@@ -1,11 +1,13 @@
 source "https://rubygems.org"
 
 gem "bootstrap"
+gem "ckeditor"
 gem "coffee-rails", "~> 4.2"
 gem "config"
 gem "devise"
 gem "jbuilder", "~> 2.5"
 gem "jquery-rails"
+gem "jquery-turbolinks"
 gem "puma", "~> 3.7"
 gem "rails", "~> 5.1.1"
 gem "sass-rails", "~> 5.0"
@@ -14,6 +16,8 @@ gem "sweetalert-rails"
 gem "tether-rails"
 gem "turbolinks", "~> 5"
 gem "uglifier", ">= 1.3.0"
+gem "will_paginate"
+gem "will_paginate-bootstrap4"
 
 group :development do
   gem "web-console", ">= 3.3.0"
