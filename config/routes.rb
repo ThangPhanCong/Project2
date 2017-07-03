@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   mount Ckeditor::Engine => '/ckeditor'
-  get 'users/show'
   root to: "static_pages#home"
 
   devise_for :users, controllers: {
@@ -13,4 +12,10 @@ Rails.application.routes.draw do
     get "sign_up", to: "users/registrations#new"
   end
   resources :posts,  only: [:create, :destroy]
+  resources :users do
+    member do
+      get :following, :followers
+    end
+  end
+  resources :relationships, only: [:create, :destroy]
 end

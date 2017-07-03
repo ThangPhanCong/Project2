@@ -7,6 +7,10 @@ module ApplicationHelper
     @resource ||= User.new
   end
 
+  def resource_post
+    @post ||= Post.new
+  end
+
   def resource_class
     User
   end

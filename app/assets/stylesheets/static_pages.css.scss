@@ -21,6 +21,10 @@ body {
   margin-top: 5px;
 }
 
+.feed-post {
+  margin-top: 20px;
+}
+
 .nav-link,
 .navbar-light .navbar-brand,
 .navbar-light .navbar-toggler {
@@ -45,6 +49,11 @@ body {
 h5, h1, .field {
   color: $color-a;
  }
+
 .modal-content {
   background-color: rgba(101, 95, 95, 0.76);
+}
+
+.post-ok {
+  word-break: break-all;
 }

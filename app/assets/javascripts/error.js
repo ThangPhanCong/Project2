@@ -46,7 +46,14 @@ $(document).ready(function($) {
     event.preventDefault();
     var ok = $('#new_post').attr('action');
     var ak = $('.row');
-    var params = $('#new_post').serialize();
+    //var params = $('#new_post').serialize();
+    let post_content = CKEDITOR.instances.post_content.getData();
+    let params = {
+      post: {
+        title: $('#post_title').val(),
+        content: post_content
+      }
+    }
     $.ajax({
       url: ok,
       method: 'post',
@@ -57,12 +64,13 @@ $(document).ready(function($) {
         if(response.status == 'success') {
           ak.closest('body').find(".posts").prepend(response.html);
           $('#new_post').closest('.row').find(".title-field.form-control").val("");
+          CKEDITOR.instances.post_content.setData('');
           $('#new_post').closest('.row').find(".content-field.form-control").val("");
           $('#newpost').modal('hide');
         }
         else
           {
-            sweetAlert('Please complete your posts!');
+            sweetAlert('Please complete your posts title errors!');
           }
       })
       .fail(function() {

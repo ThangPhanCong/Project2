@@ -6,3 +6,8 @@ en:
       login: "Login"
     post_form:
       create: "Create Post"
+  users:
+    follow:
+      btn_follow: "Follow"
+    unfollow:
+      btn_unfollow: "Unfollow"

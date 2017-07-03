@@ -1,11 +1,11 @@
 <div class="row feed-post">
   <div class="col-6 offset-sm-3">
     <div class="card card-block post-ok">
-      <a href=<%= users_show_path(post.user) %> class="post_user">
+      <a href=<%= user_path(post.user) %> class="post_user">
         <span class="name"><%= post.user.name %></span>
       </a>
       <h4 class="card-title"><%= post.title %></h4>
-      <%= post.content %>
+      <%= raw post.content %>
 
       <p class="card-text">
       <span class="timestamp">
