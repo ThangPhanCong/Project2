@@ -1,0 +1,38 @@
+<nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+  <div class="container">
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+      <%= link_to image_tag("logo_white.png"), root_path %>
+      <form class="form-inline my-2 my-lg-0 formsearch" method="get"
+        action="users">
+        <input class="form-control mr-sm-2" type="text" placeholder= <%= t ".search" %> name="query">
+      </form>
+      <ul class="navbar-nav mr-auto">
+      </ul>
+
+      <div class="nav-item active nav-user">
+        <%= link_to image_tag("all-user.png"), "#", class: "nav-link"%>
+      </div>
+
+      <% if user_signed_in? %>
+        <div class="nav-item active ">
+          <%= link_to image_tag("logout.png"),  destroy_user_session_path, method: :delete,
+            class: "nav-link"%>
+        </div>
+      <% else %>
+        <div class="nav-item active ">
+          <%= link_to image_tag("signup.png"), "#", class: "nav-link"%>
+        </div>
+
+        <div class="nav-item active ">
+          <%= link_to image_tag("login.png"), "#", class: "nav-link"%>
+        </div>
+
+        <div class="nav-item active ">
+          <%= link_to image_tag("login-face.png"),"#",
+            class: "nav-link" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</nav>
+
