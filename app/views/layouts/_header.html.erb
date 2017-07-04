@@ -8,10 +8,10 @@
     <div class="container">
       <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
         <%= link_to (image_tag "logo_white.png"), root_path %>
-        <form class="form-inline my-2 my-lg-0 formsearch" method="get"
-          action="users">
-          <input class="form-control mr-sm-2" type="text" placeholder="Search" name="query">
-        </form>
+          <%= form_tag searches_path, method: :get do %>
+            <%= text_field_tag :q, params[:name],
+              class: "search-box1 form-control", autocomplete: :off %>
+          <% end %>
         <ul class="navbar-nav mr-auto">
         </ul>
 

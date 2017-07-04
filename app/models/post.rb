@@ -1,6 +1,7 @@
 class Post < ApplicationRecord
   belongs_to :user
   default_scope -> { order(created_at: :desc) }
+  scope :search, ->q{where "title LIKE ?", "%#{q}%"}
   has_many :post_tags
   has_many :tags, through: :post_tags
   has_many :comments

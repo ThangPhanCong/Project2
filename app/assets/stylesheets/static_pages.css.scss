@@ -9,6 +9,10 @@ $color-hover: #f00;
   height: 100vh;
 }
 
+.card {
+  background-color: rgba(247, 241, 240, 0.41);
+}
+
 body {
   background-color: #3A4348;
 }
@@ -38,6 +42,11 @@ body {
 .form-control {
   background-color: rgb(250, 255, 189);
 }
+
+.search-box1{
+  border-radius: 02.25rem;
+}
+
 .formsearch {
   margin-left: 15px;
 }
@@ -56,4 +65,14 @@ h5, h1, .field {
 
 .post-ok {
   word-break: break-all;
+}
+
+input {
+  height: 35px;
+  margin-top: 6px;
+  margin-left: 6px;
+}
+
+.offset-sm-3 {
+    margin-left: -1%;
 }

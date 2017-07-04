@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'searches/index'
+
   mount Ckeditor::Engine => '/ckeditor'
   root to: "static_pages#home"
 
@@ -18,4 +20,5 @@ Rails.application.routes.draw do
     end
   end
   resources :relationships, only: [:create, :destroy]
+  resources :searches, only: [:index]
 end
