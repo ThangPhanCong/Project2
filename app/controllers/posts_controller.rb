@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
-  before_action :logged_in_user, only: [:create, :show]
-  before_action :correct_user, only: [:new, :destroy]
+  before_action :logged_in_user, only: [:create, :edit, :show]
+  before_action :correct_user, only: [:new, :edit, :update, :destroy]
 
   def new
     @post = Post.new
@@ -12,6 +12,19 @@ class PostsController < ApplicationController
       render json: {status: :success, html: render_to_string(@post)}
     else
       @feed_items = []
+      render json: {status: :error, message: "false"}
+    end
+  end
+
+  def edit
+    @post = current_user.posts.find_by id: params[:id]
+  end
+
+  def update
+     if @post.update post_params
+      @post.update_columns(created_at: Time.current)
+      render json: {status: :success, title: (@post.title), content: @post.content}
+    else
       render json: {status: :error, message: "false"}
     end
   end

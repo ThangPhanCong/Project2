@@ -11,3 +11,7 @@ en:
       btn_follow: "Follow"
     unfollow:
       btn_unfollow: "Unfollow"
+  posts:
+    post:
+      edit: "Edit"
+      delete: "Delete"

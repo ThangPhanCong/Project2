@@ -9,10 +9,6 @@ $color-hover: #f00;
   height: 100vh;
 }
 
-.card {
-  background-color: rgba(247, 241, 240, 0.41);
-}
-
 body {
   background-color: #3A4348;
 }
@@ -76,3 +72,7 @@ input {
 .offset-sm-3 {
     margin-left: -1%;
 }
+
+// .modal-backdrop.show {
+//   display: none;
+// }
