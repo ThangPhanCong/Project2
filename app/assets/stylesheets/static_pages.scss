@@ -10,6 +10,10 @@
   background-color: $color-nav;
 }
 
+.br-btn {
+  margin-top: 5px;
+}
+
 .nav-link,
 .navbar-light .navbar-brand,
 .navbar-light .navbar-toggler {
@@ -20,6 +24,23 @@
   }
 }
 
+.form-control {
+  background-color: $color-form;
+}
 .formsearch {
   margin-left: 15px;
+}
+
+.form-size {
+  margin: auto;
+}
+
+h5,
+h1,
+.field {
+  color: $color-a;
+ }
+
+.modal-content {
+  background-color: $color-modal;
 }
