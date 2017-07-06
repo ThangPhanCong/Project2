@@ -1,4 +1,4 @@
-$(document).ready(function($) {
+jQuery(document).ready(function($) {
   $('body').on('click', '#btn-signin', function(event) {
     event.preventDefault();
     var ok = $('#new_user').attr('action');
@@ -11,7 +11,7 @@ $(document).ready(function($) {
     })
       .done(function(response) {
         if (response.status == 'error') {
-          sweetAlert('Invalid password or email!');
+         sweetAlert("Users errors or null!")
         }
       })
       .fail(function() {
@@ -30,7 +30,7 @@ $(document).ready(function($) {
     })
       .done(function(response) {
         if (response.status == 'error1') {
-          sweetAlert('Please complete all information!');
+          sweetAlert('Please complete all information and all right!');
         }
       })
       .fail(function() {
@@ -75,6 +75,7 @@ $(document).ready(function($) {
       })
       .fail(function() {
       });
+      return false;
   });
   $('body').on('click','.dele-post',function(event){
     event.preventDefault();

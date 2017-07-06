@@ -13,7 +13,11 @@ Rails.application.routes.draw do
     get "sign_in", to: "users/sessions#new"
     get "sign_up", to: "users/registrations#new"
   end
-  resources :posts
+
+  resources :posts do
+    resources :comments
+  end
+
   resources :users do
     member do
       get :following, :followers

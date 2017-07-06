@@ -12,7 +12,7 @@ class Users::SessionsController < Devise::SessionsController
     if user && user.valid_password?(params[:user][:password])
       super
     else
-      render json: {status: :error, html: "hihi" }
+      render json: {status: :error, message:  "false" }
     end
   end
 

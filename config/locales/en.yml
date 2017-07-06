@@ -15,3 +15,9 @@ en:
     post:
       edit: "Edit"
       delete: "Delete"
+      add_comment: "Wirte your comment here:"
+  comments:
+    comment:
+      edit-comment: "Edit"
+      delete-comment: "Delete"
+      yousure: "You sure:"

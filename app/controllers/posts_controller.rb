@@ -21,9 +21,9 @@ class PostsController < ApplicationController
   end
 
   def update
-     if @post.update post_params
+    if @post.update post_params
       @post.update_columns(created_at: Time.current)
-      render json: {status: :success, title: (@post.title), content: @post.content}
+      render json: {status: :success, title: @post.title, content: @post.content}
     else
       render json: {status: :error, message: "false"}
     end
@@ -31,6 +31,7 @@ class PostsController < ApplicationController
 
   def destroy
     @post = current_user.posts.find_by id: params[:id]
+
     if @post.destroy
       render json: {status: :dessuccess, html: render_to_string(@post)}
     else

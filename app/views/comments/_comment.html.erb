@@ -1,0 +1,15 @@
+<div class="each-comment">
+  <%= link_to comment.user.name, comment.user %>
+    <span class="comment-content"><%= comment.content %></span>
+    (<%= time_ago_in_words(comment.created_at) %>)
+    <% if current_user?(comment.user) %>
+      <%= link_to t(".edit-comment"), edit_post_comment_path(comment.post, comment), class: "edit-comments" %>
+      <div class="form-edit">
+        <%= form_for [comment.post, comment] do |f| %>
+        <%= f.text_field :content, class: "form-control update-comment" %>
+        <% end %>
+      </div>
+      <%= link_to t(".delete-comment"), [comment.post, comment],
+        method: :delete, data: { confirm: t(".yousure") }, class: "deletes_comment" %>
+  <% end %>
+</div>

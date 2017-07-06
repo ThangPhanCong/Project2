@@ -16,6 +16,19 @@
             data: { confirm: t(".yousure") }, class: "dele-post" %>
         <% end %>
       </span>
+      <ol id="comments">
+        <small class="tet">
+          <%= render partial: "comments/comment", collection: post.comments, as: "comment" %>
+        </small>
+      </ol>
+      <% if logged_in?  %>
+        <% if current_user.following?(post.user) or current_user?(post.user) %>
+          <%= form_for [post,current_user.comments.build], id: "new_comment" do |f| %>
+            <%= f.text_field :content, class: "comment-field form-control", placeholder: t(".add_comment") %>
+            <%= f.hidden_field :post_id, value: post.id %>
+          <% end %>
+        <% end  %>
+      <% end %>
     </div>
   </div>
   <div  class="modal fade"  id="modaledit-<%= post.id %>" role="dialog" aria-hidden="true" >

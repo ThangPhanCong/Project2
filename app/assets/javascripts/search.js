@@ -1,4 +1,4 @@
-$(document).ready(function() {
+jQuery(document).ready(function() {
   $('.search-box1').on('keyup', function() {
       var key_name = $(this).val();
       $.ajax({

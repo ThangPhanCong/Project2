@@ -16,4 +16,5 @@
 //= require sweetalert
 //= require rails-ujs
 //= require ckeditor/init
+//= require toastr
 //= require_tree .
