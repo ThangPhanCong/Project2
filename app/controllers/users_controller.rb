@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :load_user, only: :show
+  before_action :load_user, only: [:show, :edit, :update]
 
   def index
     @users = User.all
@@ -7,6 +7,17 @@ class UsersController < ApplicationController
 
   def show
     @posts = @user.posts.paginate(page: params[:page])
+  end
+
+  def edit
+  end
+
+  def update
+    if @user.update user_params
+      render json: {status: :success, html: render_to_string(@user)}
+    else
+      render json: {status: :error, message: "false" }
+    end
   end
 
   def following
@@ -30,6 +41,11 @@ class UsersController < ApplicationController
 
     return if @user
     redirect_to user_path
+  end
+
+
+  def user_params
+    params.require(:user).permit :name, :email, :password, :password_confirmation
   end
 
   def destroy

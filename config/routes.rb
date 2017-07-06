@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
+  mount Ckeditor::Engine => '/ckeditor'
   get 'searches/index'
 
-  mount Ckeditor::Engine => '/ckeditor'
   root to: "static_pages#home"
 
   devise_for :users, controllers: {

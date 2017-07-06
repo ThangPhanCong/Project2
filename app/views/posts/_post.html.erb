@@ -1,21 +1,29 @@
 <div class="row feed-post" id="<%= post.id %>">
   <div class="col-6 offset-sm-3">
     <div class="card card-block post-ok">
-      <a href=<%= user_path(post.user) %> class="post_user">
-        <span class="name"><%= post.user.name %></span>
-      </a>
+
+      <% if current_user?(post.user) %>
+        <div class="dropdown show">
+          <a class=" dropdown-toggle" href="#" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          </a>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+              <a href="#" class="dropdown-item"><div data-toggle="modal", data-target='#modaledit-<%= post.id %>'>Edit</div></a>
+              <%= link_to t(".delete"), post, method: :delete,data: { confirm: t(".yousure") }, class: "dele-post dropdown-item" %>
+          </div>
+        </div>
+      <% end %>
+        <span><%= post.user.avatar %></span>
+        <a href=<%= user_path(post.user) %> class="post_user">
+          <span class="name"><%= post.user.name %></span>
+        </a>
+        <span class="timestamp">
+        <%= time_ago_in_words(post.created_at) %> <%= t ".ago" %>
+      </span>
       <h4 class="card-title post-title"><%= post.title %></h4>
       <div class="post-content"><%= raw post.content %></div>
 
       <p class="card-text">
-      <span class="timestamp">
-        <%= t ".posted" %> <%= time_ago_in_words(post.created_at) %> <%= t ".ago" %>
-        <% if current_user?(post.user) %>
-        <a href="#"><div data-toggle="modal", data-target='#modaledit-<%= post.id %>'>Edit</div></a>
-          <%= link_to t(".delete"), post, method: :delete,
-            data: { confirm: t(".yousure") }, class: "dele-post" %>
-        <% end %>
-      </span>
+
       <ol id="comments">
         <small class="tet">
           <%= render partial: "comments/comment", collection: post.comments, as: "comment" %>
@@ -57,4 +65,17 @@
     </div>
   </div>
 
+  <div id="myModal" class="modal image">
+    <span class="close" >&times;</span>
+    <img class="modal-content image" id="img01">
+    <div id="caption"></div>
+  </div>
+
 </div>
+<script>
+  jQuery(document).ready(function($) {
+    $.each($('.post-content p img'), function( index, value ) {
+      value.style = '';
+    });
+  });
+</script>

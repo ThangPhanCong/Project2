@@ -1,5 +1,5 @@
 class Users::RegistrationsController < Devise::RegistrationsController
-  # before_action :configure_sign_up_params, only: [:create]
+  before_action :load_user, only: [:create, :edit, :update]
   # before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
@@ -9,7 +9,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
-    @user = User.new sign_up_params
+    @user = User.new user_params
 
     if @user.save
       super
@@ -19,15 +19,19 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   # GET /resource/edit
-  # def edit
-  #   super
-  # end
+  def edit
+    super
+  end
 
-  # PUT /resource
-  # def update
-  #   super
-  # end
-
+  def update
+    @user = User.find(current_user.id)
+    if @user.update_attributes(params[:user])
+      byebug
+      redirect_to after_update_path_for(@user)
+    else
+      render "edit"
+    end
+  end
   # DELETE /resource
   # def destroy
   #   super
@@ -50,10 +54,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
   private
 
-  def sign_up_params
-    params.require(:user).permit :name, :email, :password, :password_confirmation
+  def user_params
+    params.require(:user).permit :name, :email, :password, :password_confirmation, :avatar
   end
 
+  def load_user
+    @user = User.find_by id: params[:id]
+  end
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_account_update_params
   #   devise_parameter_sanitizer.permit(:account_update, keys: [:attribute])

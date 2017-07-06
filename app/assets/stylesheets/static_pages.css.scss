@@ -74,9 +74,17 @@ input {
 }
 
 .offset-sm-3 {
-    margin-left: -1%;
+    margin-left: 26%;
 }
 
-// .modal-backdrop.show {
-//   display: none;
-// }
+.post-content p img {
+  width: 100%;
+}
+
+.dropdown {
+  width: 100%;
+}
+
+.timestamp {
+  color: #90949c;
+}

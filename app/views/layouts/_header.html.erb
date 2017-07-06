@@ -24,6 +24,12 @@
             <%= link_to (image_tag "logout.png"),  destroy_user_session_path, method: :delete,
               class: "nav-link"%>
           </div>
+
+          <div class="nav-item active edit_user ">
+            <span class="nav-link" data-toggle="modal", data-target='#edituser'>
+              <%= link_to (image_tag "edit-user.png"), "#" %>
+            </span>
+          </div>
         <% else %>
           <div class="nav-item active btn_signup ">
             <%= link_to (image_tag "signup.png"), sign_up_path,class: "nav-link"%>

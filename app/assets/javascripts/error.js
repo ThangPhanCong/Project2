@@ -77,6 +77,7 @@ jQuery(document).ready(function($) {
       });
       return false;
   });
+
   $('body').on('click','.dele-post',function(event){
     event.preventDefault();
     var ok = $(this);
@@ -88,6 +89,7 @@ jQuery(document).ready(function($) {
         success: function (response) {
           if (response.status == 'dessuccess') {
             ok.closest('.post-ok').fadeOut('slow');
+
           }
         },
         error: function (xhr, ajaxOptions, thrownError) {

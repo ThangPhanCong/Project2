@@ -30,7 +30,7 @@ class CommentsController < ApplicationController
     @comment = current_user.comments.find_by id: params[:id]
 
     if @comment.destroy
-      render json: {status: :success, html: render_to_string(@post)}
+      render json: {status: :success, html: render_to_string(@comment)}
     else
       render json: {status: :error, message: "false"}
     end

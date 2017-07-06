@@ -41,4 +41,30 @@ jQuery(document).ready(function($) {
     });
     return false;
   });
+
+  $('body').on('submit', '.edit_user', function(event) {
+    event.preventDefault();
+    var self = $(this);
+    var params_edit_user = $(this).serialize();
+    $.ajax({
+      url: self.attr('action'),
+      type: 'put',
+      dataType: 'json',
+      data: params_edit_user,
+    })
+    .done(function(response) {
+      if (response.status == 'success') {
+        sweetAlert("Update successfully!");
+        $('#edituser').modal('hide');
+
+      }
+    })
+    .fail(function() {
+      console.log("error");
+    })
+    .always(function() {
+      console.log("complete");
+    });
+
+  });
 });
