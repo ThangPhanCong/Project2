@@ -26,7 +26,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def update
     @user = User.find(current_user.id)
     if @user.update_attributes(params[:user])
-      byebug
       redirect_to after_update_path_for(@user)
     else
       render "edit"

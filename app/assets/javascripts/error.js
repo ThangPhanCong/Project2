@@ -51,6 +51,7 @@ jQuery(document).ready(function($) {
     let params = {
       post: {
         title: $('#post_title').val(),
+        all_tags: $('#post_all_tags').val(),
         content: post_content
       }
     }

@@ -5,6 +5,9 @@
     <%= f.label :name %><br />
     <%= f.text_field :name, autofocus: true, class: "form-control" %>
   </div>
+  <span class="picture">
+    <%= f.file_field :avatar %>
+  </span>
 
   <div class="field">
     <%= f.label :email %><br />

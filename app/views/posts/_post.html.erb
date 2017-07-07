@@ -12,7 +12,6 @@
           </div>
         </div>
       <% end %>
-        <span><%= post.user.avatar %></span>
         <a href=<%= user_path(post.user) %> class="post_user">
           <span class="name"><%= post.user.name %></span>
         </a>
@@ -20,6 +19,10 @@
         <%= time_ago_in_words(post.created_at) %> <%= t ".ago" %>
       </span>
       <h4 class="card-title post-title"><%= post.title %></h4>
+
+      <div class="badge badge-default">
+        <%=  post.all_tags %>
+      </div>
       <div class="post-content"><%= raw post.content %></div>
 
       <p class="card-text">
@@ -77,5 +80,9 @@
     $.each($('.post-content p img'), function( index, value ) {
       value.style = '';
     });
+    var span = document.getElementsByClassName("close")[0];
+    span.onclick = function() {
+      modal.style.display = "none";
+    }
   });
 </script>

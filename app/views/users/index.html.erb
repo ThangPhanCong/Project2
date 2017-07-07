@@ -5,6 +5,7 @@
       <% @users.each do |user| %>
         <li class="li_user">
           <%= link_to user.name, user %>
+          <%= image_tag user.avatar.url if user.avatar? %>
         </li>
       <% end %>
     </ul>
