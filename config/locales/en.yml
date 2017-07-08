@@ -5,3 +5,43 @@ en:
       signup: "Signup"
       login: "Login"
       search: "Search"
+    application:
+      formsignin: "Formsignin"
+      formsignup: "Formsignup"
+    form_login:
+      login: "Login"
+    form_signup:
+      minimum: "characters minimum"
+      signup: "Signup"
+  users:
+    mailer:
+      password_change:
+        hello: "Hello"
+        contacting: "We're contacting you to notify you that your password has been changed."
+      reset_password_instructions:
+        hello: "Hello"
+        request: "Someone has requested a link to change your password. You can do this through the link below."
+        change: "Change my password"
+        ignore: "If you didn't request this, please ignore this email."
+        access: "Your password won't change until you access the link above and create a new one."
+    registrations:
+      edit:
+        edit_text: "Edit"
+        cancel: "Cancel my account"
+        back: "Back"
+        confirm: "Currently waiting confirmation for:"
+        leave: "(leave blank if you don't want to change it)"
+        characters: "characters minimum"
+        need: "(we need your current password to confirm your changes)"
+        sure: "Are you sure?"
+        unhappy: "Unhappy?"
+    create:
+      message: "false"
+      error: "Error!"
+    destroy:
+      message_destroy: "false"
+  error:
+    alert:
+      invalid: "Invalid password or email!"
+      please: "Please complete all information and correct!"
+      success: "Signup successfully! You can login!"
