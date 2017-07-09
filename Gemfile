@@ -1,29 +1,36 @@
 source "https://rubygems.org"
 
 gem "bootstrap"
+gem "cancancan"
+gem "carrierwave", "1.1.0"
 gem "ckeditor"
 gem "coffee-rails", "~> 4.2"
 gem "config"
 gem "devise"
+gem "fog", "1.40.0"
 gem "jbuilder", "~> 2.5"
 gem "jquery-rails"
 gem "jquery-turbolinks"
-gem "paperclip"
-gem "carrierwave", "1.1.0"
 gem "mini_magick", "4.7.0"
-gem "fog", "1.40.0"
+gem "omniauth-facebook"
+gem "paperclip"
 gem "puma", "~> 3.7"
 gem "rails", "~> 5.1.1"
+gem "ransack"
 gem "sass-rails", "~> 5.0"
-gem "sqlite3"
 gem "sweetalert-rails"
 gem "tether-rails"
 gem "toastr-rails"
 gem "turbolinks", "~> 5"
 gem "uglifier", ">= 1.3.0"
-gem "will_paginate"
-gem "will_paginate-bootstrap4"
-gem "impressionist"
+gem "will_paginate", "3.1.5"
+gem "social-share-button"
+gem "bootstrap-will_paginate"
+gem 'kaminari'
+gem 'ransack'
+gem 'bootstrap-kaminari-views'
+gem "chartkick"
+
 
 group :development do
   gem "web-console", ">= 3.3.0"
@@ -55,6 +62,7 @@ group :development, :test do
   gem "rails_best_practices"
   gem "reek"
   gem "railroady"
+  gem "sqlite3"
   gem "autoprefixer-rails"
 end
 
@@ -63,6 +71,10 @@ group :test do
   gem "simplecov-rcov", require: false
   gem "simplecov-json"
   gem "shoulda-matchers"
+end
+
+group :production do
+  gem "pg"
 end
 
 gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]

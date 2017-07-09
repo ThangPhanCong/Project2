@@ -2,22 +2,11 @@ class UsersController < ApplicationController
   before_action :load_user, only: [:show, :edit, :update]
 
   def index
-    @users = User.all
+    @users = User.all.page(params[:page]).per_page(3)
   end
 
   def show
     @posts = @user.posts.paginate(page: params[:page])
-  end
-
-  def edit
-  end
-
-  def update
-    if @user.update user_params
-      render json: {status: :success, html: render_to_string(@user)}
-    else
-      render json: {status: :error, message: "false" }
-    end
   end
 
   def following

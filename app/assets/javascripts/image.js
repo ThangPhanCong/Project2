@@ -10,6 +10,7 @@ jQuery(document).ready(function($) {
     });
     var span = document.getElementsByClassName("close")[0];
     span.onclick = function() {
+      var modal = document.getElementById('myModal');
       modal.style.display = "none";
     }
    $('body').on('click', '.close', function(event) {

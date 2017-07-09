@@ -1,0 +1,26 @@
+<script src="https://cloud.tinymce.com/stable/tinymce.min.js?"></script>
+<script>tinymce.init({ selector:'textarea',
+  plugins: "codesample image media",
+    toolbar: "undo redo | bold italic | codesample image media" });</script>
+    <span class="avatar">
+      <%= image_tag current_user.avatar.thumb.url if current_user.avatar? %>
+    </span>
+     <%= link_to current_user.name, current_user %>
+    <%= form_for([:admin, Post.new]) do |f| %>
+      <div class="form-group">
+        <%= f.label :title %>
+        <%= f.text_field :title,placeholder: "Title:", class: "title-field form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :tags %>
+         <%= f.text_field :all_tags, placeholder: "Tags:", class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.text_area :content, class: "content-field form-control" %>
+      </div>
+
+      <div class="">
+        <%= f.submit "Create", class: "btn btn-outline-primary ", id: "btn-create-admin" %>
+      </div>
+    <% end %>

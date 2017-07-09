@@ -1,0 +1,23 @@
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <%= link_to (image_tag "indent-all.png"), admin_posts_path(@post), class: "post-ajax", data: { toggle: 'tooltip', title: "All posts", placement: "right"} %>
+  <%= link_to (image_tag "users.png"), admin_users_path(@user), class: "user-ajax", data: { toggle: 'tooltip', title: "All users", placement: "right"}%>
+   <%= link_to (image_tag "new-post.png"), admin_users_path(@user), class: "new-post-ajax", data: { toggle: 'tooltip', title: "New posts", placement: "right"} %>
+   <%= link_to (image_tag "signup.png"), admin_users_path(@user), class: "new-user-ajax", data: { toggle: 'tooltip', title: "New users", placement: "right"} %>
+   <%= link_to (image_tag "excel.png"), admin_posts_path(format: "xls"), class: "excel-post-ajax", data: { toggle: 'tooltip', title: "Export excel posts", placement: "right"} %>
+   <%= link_to (image_tag "xls-user.png"), admin_users_path(format: "xls"), class: "excel-user-ajax", data: { toggle: 'tooltip', title: "Export excel users", placement: "right"} %>
+</div>
+
+<%= image_tag "taoadmin.png", class: "img-admin" %>
+<%= link_to current_user.name, current_user %>
+<span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; </span>
+<div class="ren_post"></div>
+<script>
+function openNav() {
+    document.getElementById("mySidenav").style.width = "177px";
+}
+
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+}
+</script>

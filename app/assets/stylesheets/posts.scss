@@ -1,0 +1,102 @@
+@import "variables";
+
+.post-setup{
+  float: right;
+}
+.post-tags{
+  margin-left: 60px;
+  margin-bottom: 20px;
+  .post-tag{
+    display: inline;
+    background: #DDDFE2;
+    padding: 10px;
+    border-radius: 20px;
+    font-size: 0.9em;
+  }
+}
+
+.post-top{
+  display: flex;
+  margin-bottom: 14px;
+  .post-user{
+    text-transform: capitalize;
+    display: block;
+
+    &:hover{
+      text-decoration: none;
+      .name{
+        color: #999;
+      }
+    }
+    .avatar{
+      img{
+        width: 50px;
+      }
+    }
+  }
+
+  .post-header{
+    display: block;
+    margin-left: 10px;
+    .name{
+      font-weight: 600;
+      font-size: 1.2em;
+      color: #3b5998;
+      text-transform: capitalize;
+    }
+    .post-title{
+      display: inline;
+      color: #555;
+      font-weight: 400;
+    }
+    .time{
+      font-size: 0.9em;
+    }
+  }
+}
+
+.comment-user{
+  font-weight: 600;
+  color: #3b5998;
+  font-size: 0.9em;
+  text-transform: capitalize;
+}
+
+.comment-content{
+  font-size: 0.9em;
+  font-weight: 400;
+}
+
+.comment-time{
+  font-size: 0.8em;
+}
+
+.each-comment{
+  position: relative;
+  &:hover{
+    .comment-actions{
+      display: block;
+    }
+  }
+  .comment-actions{
+    display: none;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    .deletes_comment, .edit-comments{
+      color: #3b5998;
+      font-size: 0.9em;
+    }
+  }
+}
+
+.modal-edit-post{
+  display: none;
+}
+
+.edit-avatar {
+  img{
+    margin-left: 7px;
+    margin-top: 5px;
+  }
+}

@@ -1,7 +1,6 @@
 class PostsController < ApplicationController
   before_action :logged_in_user, only: [:create, :edit]
   before_action :correct_user, only: [:new, :edit, :update, :destroy]
-  impressionist :actions=>[:show,:index]
 
   def new
     @post = Post.new
@@ -23,7 +22,6 @@ class PostsController < ApplicationController
 
   def update
     if @post.update post_params
-      @post.update_columns(created_at: Time.current)
       render json: {status: :success, title: @post.title, content: @post.content}
     else
       render json: {status: :error, message: "false"}

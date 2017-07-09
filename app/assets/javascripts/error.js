@@ -11,7 +11,7 @@ jQuery(document).ready(function($) {
     })
       .done(function(response) {
         if (response.status == 'error') {
-         sweetAlert("Users errors or null!")
+         sweetAlert("Users errors or null!");
         }
       })
       .fail(function() {
@@ -42,11 +42,10 @@ jQuery(document).ready(function($) {
       });
   });
 
-  $('body').on('click', '#btn-create', function(event) {
+  $('body').on('click', '#btn-create-ajax', function(event) {
     event.preventDefault();
-    var ok = $('#new_post').attr('action');
+    var ok = $('.new_form_ajax').attr('action');
     var ak = $('.row');
-    //var params = $('#new_post').serialize();
     let post_content = CKEDITOR.instances.post_content.getData();
     let params = {
       post: {
@@ -79,7 +78,7 @@ jQuery(document).ready(function($) {
       return false;
   });
 
-  $('body').on('click','.dele-post',function(event){
+  $('body').on('click','.dele-post-ajax',function(event){
     event.preventDefault();
     var ok = $(this);
         $.ajax({

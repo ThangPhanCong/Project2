@@ -11,7 +11,7 @@ jQuery(document).ready(function() {
     })
     .done(function(response) {
       if (response.status == 'success') {
-        comment.closest('.feed-post').find('.tet').append(response.html);
+        comment.closest('.feed-post').find('#comments').append(response.html);
         comment.closest('.feed-post').find('.comment-field').val('');
       }
     })
@@ -37,7 +37,6 @@ jQuery(document).ready(function() {
       remove_comment.closest('.each-comment').slideUp('fast');
      })
      .fail(function() {
-       console.log("error");
      })
      .always(function() {
        console.log("complete");
@@ -47,9 +46,10 @@ jQuery(document).ready(function() {
 
   $('body').on('click', '.edit-comments', function(event) {
     event.preventDefault();
-    var current_comments = $(this);
-    $(this).next().slideToggle();
-    return false;
+    var form_edit = $(this).parent().next();
+    console.log(form_edit);
+    form_edit.slideToggle();
+    //return false;
   });
 
   $('body').on('submit', '.edit_comment', function(event) {
@@ -66,7 +66,7 @@ jQuery(document).ready(function() {
       if (response.status == 'success') {
         toastr["success"]("Update comment successfully!")
         edit_post_comment.closest('.each-comment').find('.comment-content').text(response.content);
-        edit_post_comment.closest('.update-comment').hide('slow');
+        edit_post_comment.hide('slow');
       }
     })
     .fail(function() {

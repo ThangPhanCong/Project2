@@ -1,0 +1,23 @@
+<div class="">
+  <div>
+    <h1 class="text-center">
+      <%= @user.name %>
+    </h1 >
+
+    <h6 class="text-center" >
+      <%= render "layouts/stats" %>
+    </h6>
+  </div>
+</div>
+
+
+    <% if @user.posts.any? %>
+  <div class="posts list_post">
+    <div class="post-width">
+      <div class="post-item">
+      <%= render @posts %>
+      </div>
+    </div>
+  </div>
+  <%= will_paginate @posts %>
+<% end %>

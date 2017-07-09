@@ -1,0 +1,24 @@
+<div class="col-md-3 offset-md-1">
+  <div class="all-post"><%= t ".all-post" %></div>
+  <div class="card">
+    <div class="card-block">
+      <span class="btn btn-outline-primary count-user-admin">
+        <%= Post.count %> Posts<br>
+      </span>
+            <table style="width:100%" class="table table-hover">
+              <tr >
+                <th class="th-title">Title</th>
+                <th class="th-title">Time</th>
+                <th class="th-title ">User</th>
+              </tr>
+              <% @posts.each do |post| %>
+              <tr>
+                <td class="td-title"><%= link_to post.title, [:admin,post] %></td>
+                <td class="td-title"><%= link_to post.created_at, [:admin,post] %></td>
+                <td><%= link_to post.user.name, post.user, class: "post-user-name" %></td>
+              </tr>
+          <% end %>
+      </table>
+    </div>
+  </div>
+</div>

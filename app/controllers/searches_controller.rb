@@ -1,7 +1,7 @@
 class SearchesController < ApplicationController
   def index
     if request.xhr?
-      @posts = Post.search(params[:title])
+      @posts = Post.search_post(params[:title])
       render json: {
         search_result: render_to_string(@posts)
       }, status: :ok

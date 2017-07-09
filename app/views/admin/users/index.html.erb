@@ -1,0 +1,21 @@
+<div class=" all-admin-user">
+      <h1 class="text-center">All users</h1>
+<%= will_paginate %>
+<span class="btn btn-outline-primary count-user-admin">
+  <%= User.count %> Users<br>
+</span>
+<ul class="users ">
+  <% @users.each do |user| %>
+    <li class="li-user-admin">
+      <%= image_tag user.avatar.thumb.url if user.avatar? %>
+      <%= link_to user.name, admin_user_path(user) %>
+      <% if !user.is_admin? %>
+        <%= link_to "Destroy", admin_user_path(user), method: :delete, data: {confirm: "You sure?"},
+        class: "admin-delete-user" %>
+      <% end %>
+    </li><br>
+  <% end %>
+  </ul>
+<%= will_paginate %>
+</div>
+

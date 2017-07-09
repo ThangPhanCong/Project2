@@ -17,4 +17,5 @@
 //= require rails-ujs
 //= require ckeditor/init
 //= require toastr
+//= require social-share-button
 //= require_tree .

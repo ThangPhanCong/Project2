@@ -6,7 +6,7 @@ Devise.setup do |config|
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
-  # config.secret_key = '21d64e2eaeabffd7ab2a6127f7f84849fe014de3163281e61a816f04762b32f3e99017da6f02dff2ae75633fd7c0feaaeffe0be6258a56de8eabb8a502f4259e'
+  config.secret_key = '21d64e2eaeabffd7ab2a6127f7f84849fe014de3163281e61a816f04762b32f3e99017da6f02dff2ae75633fd7c0feaaeffe0be6258a56de8eabb8a502f4259e'
 
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
@@ -47,6 +47,8 @@ Devise.setup do |config|
   # These keys will be downcased upon creating or modifying a user and when used
   # to authenticate or find a user. Default is :email.
   config.case_insensitive_keys = [:email]
+  config.omniauth :facebook, '440827766298207', '5b3fab1ccf48564ed26871d34868ffa5',
+    {scope: "email, user_hometown, user_location, user_work_history"}
 
   # Configure which authentication keys should have whitespace stripped.
   # These keys will have whitespace before and after removed upon creating or

@@ -27,7 +27,7 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    @comment = current_user.comments.find_by id: params[:id]
+    @comment = @post.comments.find_by id: params[:id]
 
     if @comment.destroy
       render json: {status: :success, html: render_to_string(@comment)}
@@ -43,6 +43,7 @@ class CommentsController < ApplicationController
   end
 
   def receive_post
+
     @post = Post.find_by id: params[:post_id]
   end
 end

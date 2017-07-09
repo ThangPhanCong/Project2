@@ -1,8 +1,7 @@
 class Post < ApplicationRecord
   belongs_to :user
   default_scope -> { order(created_at: :desc) }
-  scope :search, ->q{where "title LIKE ?", "%#{q}%"}
-  is_impressionable
+  scope :search_post, ->q{where "title LIKE ?", "%#{q}%"}
 
   has_many :post_tags, dependent: :destroy
   has_many :tags, through: :post_tags
@@ -18,6 +17,15 @@ class Post < ApplicationRecord
   end
 
   def all_tags
-    tags.map(&:name).join(", ")
+    tags.map &:name
+  end
+
+   def self.to_csv(options = {})
+    CSV.generate(options) do |csv|
+      csv << column_names
+      all.each do |post|
+        csv << post.attributes.values_at(*column_names)
+      end
+    end
   end
 end

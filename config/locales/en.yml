@@ -6,6 +6,11 @@ en:
       login: "Login"
     post_form:
       create: "Create Post"
+    application:
+      result-search: "Kết quả tìm kiếm:"
+    stats:
+      following: "Following"
+      followers: "Followers"
   users:
     follow:
       btn_follow: "Follow"
@@ -15,9 +20,18 @@ en:
     post:
       edit: "Edit"
       delete: "Delete"
-      add_comment: "Wirte your comment here:"
+      add_comment: "Add comment"
   comments:
     comment:
       edit-comment: "Edit"
       delete-comment: "Delete"
       yousure: "You sure:"
+  admin:
+    posts:
+      show:
+        yousure: "You sure?"
+      index:
+        all-post: "All Posts"
+    users:
+      new:
+        signup: "Signup"

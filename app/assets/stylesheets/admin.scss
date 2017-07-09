@@ -1,0 +1,117 @@
+@import 'variables';
+
+.avatar_admin {
+  margin-bottom: 10px;
+  margin-top: 5px;
+  .avatar {
+    text-transform: capitalize;
+  }
+}
+.admin-set {
+  color: #3b5998;
+}
+
+.admin-delete-user {
+  color: #E62117;
+  font-size: 0.8em;
+  margin-bottom: 5px;
+}
+
+.all-post{
+  color: #3b5998;
+  font-size: 3em;
+}
+
+.card {
+  width: 34rem;
+}
+
+.card-img-top {
+  width: 100%;
+}
+
+.count-post {
+  margin-left: 4px;
+  color: #000;
+}
+
+.count-user {
+  margin-left: 4px;
+}
+
+.post-tags{
+  margin-left: 60px;
+  margin-bottom: 20px;
+  .post-tag{
+    background: $light-blue;
+    border-radius: 20px;
+    display: inline;
+    font-size: 0.9em;
+    padding: 10px;
+  }
+}
+
+.feed-post-admin{
+  margin-bottom: 10px;
+}
+
+.post-content-admin p img {
+  width: 100%;
+}
+
+.li-user-admin {
+  img {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+.list-group {
+  .post-user-name {
+    color: #3b5998;
+    font-weight: 600;
+  }
+}
+
+.name-user-all {
+  color: $color-whites;
+}
+
+.tab-admin {
+  color: #000;
+}
+.nav.nav-tabs.tab-admin {
+  background: #3B5998;
+  margin-top: 20px;
+}
+
+.background-admin {
+  margin-bottom: 5px;
+}
+
+.ren_post {
+   display: table;
+  margin:0 auto;
+}
+
+.sidenav {
+  margin-top: 65px;
+}
+
+#mySidenav {
+  background-color: #3B5998;
+}
+
+.th-title, .count-post {
+  color: #3B5998;
+  font-weight: 700;
+}
+
+.count-user-admin {
+  margin-bottom: 10px;
+}
+
+.post-content p strong src {
+  width: 500;
+}
+ iframe{ width: 400px; height: 400px; }

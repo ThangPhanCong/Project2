@@ -1,0 +1,52 @@
+<div class="post-item">
+  <div class="post-width">
+<div class="row feed-post-admin" >
+  <div class="col-md-6 offset-2">
+    <div class="card card-block post-show-admin">
+        <div class="dropdown ">
+          <a class=" dropdown-toggle" href="#" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          </a>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+              <%= link_to "Edit", edit_admin_post_path(post), class: "dropdown-item" %>
+              <%= link_to t(".delete"), admin_post_path(post), method: :delete,data: { confirm: t(".yousure") }, class: "dropdown-item" %>
+          </div>
+        </div>
+        <a href=<%= user_path(post.user) %> class="post_user">
+          <span class="name"><%= post.user.name %></span>
+        </a>
+        <span class="timestamp">
+        <%= time_ago_in_words(post.created_at) %> <%= t ".ago" %>
+      </span>
+      <h4 class="card-title post-title"><%= post.title %></h4>
+
+      <% if post.all_tags.length %>
+        <div class="post-tags">
+          <% post.all_tags.each do |tag| %>
+            <%= content_tag :span, tag, class: "post-tag" %>
+          <% end %>
+        </div>
+      <% end %>
+
+      <div class="post-content-admin"><%= raw post.content.html_safe %></div>
+
+      <p class="card-text">
+
+  <div id="myModal" class="modal image">
+    <span class="close" >&times;</span>
+    <img class="modal-content image" id="img01">
+    <div id="caption"></div>
+  </div>
+</div>
+</div>
+</div>
+<script>
+  jQuery(document).ready(function($) {
+    $.each($('.post-content-admin p img'), function( index, value ) {
+      value.style = '';
+    });
+    var span = document.getElementsByClassName("close")[0];
+    span.onclick = function() {
+      modal.style.display = "none";
+    }
+  });
+</script>

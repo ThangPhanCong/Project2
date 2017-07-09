@@ -1,37 +1,48 @@
-<div class="row feed-post" id="<%= post.id %>">
-  <div class="col-6 offset-sm-3">
+<div class="post-item">
+  <div class="feed-post" id="<%= post.id %>">
     <div class="card card-block post-ok">
-
       <% if current_user?(post.user) %>
-        <div class="dropdown show">
-          <a class=" dropdown-toggle" href="#" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <div class="dropdown">
+          <a class=" dropdown-toggle post-setup" href="#" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           </a>
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-              <a href="#" class="dropdown-item"><div data-toggle="modal", data-target='#modaledit-<%= post.id %>'>Edit</div></a>
-              <%= link_to t(".delete"), post, method: :delete,data: { confirm: t(".yousure") }, class: "dele-post dropdown-item" %>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
+              <a href="#" class="dropdown-item"><div id="<%= post.id %>" class="edit-post">Edit</div></a>
+              <%= link_to t(".delete"), post, method: :delete,data: { confirm: t(".yousure") }, class: "dropdown-item dele-post-ajax" %>
           </div>
         </div>
       <% end %>
-        <a href=<%= user_path(post.user) %> class="post_user">
-          <span class="name"><%= post.user.name %></span>
-        </a>
-        <span class="timestamp">
-        <%= time_ago_in_words(post.created_at) %> <%= t ".ago" %>
-      </span>
-      <h4 class="card-title post-title"><%= post.title %></h4>
 
-      <div class="badge badge-default">
-        <%=  post.all_tags %>
+      <div class="post-top">
+        <a href=<%= user_path(post.user) %> class="post-user">
+          <% if user_signed_in? %>
+          <span class="avatar">
+            <%= image_tag current_user.avatar.thumb.url  if current_user.avatar? %>
+          </span>
+          <% end %>
+        </a>
+        <div class="post-header">
+          <%= link_to post.user.name, user_path(post.user), class: "name" %>
+          <%= content_tag :div, post.title, class: "post-title" %> <br />
+          <%= content_tag :span, time_ago_in_words(post.created_at), class: "time" %>
+        </div>
       </div>
-      <div class="post-content"><%= raw post.content %></div>
+
+      <% if post.all_tags.length %>
+        <div class="post-tags">
+          <% post.all_tags.each do |tag| %>
+            <%= content_tag :span, tag, class: "post-tag" %>
+          <% end %>
+        </div>
+      <% end %>
+
+      <div class="post-content"><%= raw post.content.html_safe %></div>
+      <%= social_share_button_tag(@posts, url: request.original_url) %>
 
       <p class="card-text">
 
-      <ol id="comments">
-        <small class="tet">
+      <div id="comments">
           <%= render partial: "comments/comment", collection: post.comments, as: "comment" %>
-        </small>
-      </ol>
+      </div>
       <% if logged_in?  %>
         <% if current_user.following?(post.user) or current_user?(post.user) %>
           <%= form_for [post,current_user.comments.build], id: "new_comment" do |f| %>
@@ -41,39 +52,27 @@
         <% end  %>
       <% end %>
     </div>
-  </div>
-  <div  class="modal fade"  id="modaledit-<%= post.id %>" role="dialog" aria-hidden="true" >
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">&times;</button>
-          <h4 class="modal-title">Edit Post</h4>
-        </div>
-        <div class="modal-body">
-          <%= form_for post do |f| %>
-            <div class="form-group">
-              <%= f.text_field :title,placeholder: "Title:", class: "title-field form-control" %>
-            </div>
 
-            <div class="form-group">
-              <%= f.cktext_area :content, class: "content-field form-control" %>
-            </div>
-
-            <div class="offset-sm-2">
-              <%= f.submit "Edit", class: "btn btn-outline-secondary ", id: "btn-update" %>
-            </div>
-          <% end %>
+    <div  class="modal fade modal-edit-post"  id="modal-edit-post-<%= post.id %>" role="dialog" aria-hidden="true" >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">&times;</button>
+            <h4 class="modal-title">Edit Post</h4>
+          </div>
+          <div class="modal-body">
+            <%= render "layouts/post_form_edit", post: post %>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <div id="myModal" class="modal image">
-    <span class="close" >&times;</span>
-    <img class="modal-content image" id="img01">
-    <div id="caption"></div>
+    <div id="myModal" class="modal image">
+      <span class="close" >&times;</span>
+      <img class="modal-content image" id="img01">
+      <div id="caption"></div>
+    </div>
   </div>
-
 </div>
 <script>
   jQuery(document).ready(function($) {

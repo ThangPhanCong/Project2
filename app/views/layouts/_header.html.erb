@@ -10,38 +10,45 @@
         <%= link_to (image_tag "logo_white.png"), root_path %>
           <%= form_tag searches_path, method: :get do %>
             <%= text_field_tag :q, params[:name],
-              class: "search-box1 form-control", autocomplete: :off %>
+              class: "search-box1 form-control", autocomplete: :off, placeholder: "Search post" %>
           <% end %>
         <ul class="navbar-nav mr-auto">
         </ul>
 
         <div class="nav-item active nav-user">
-          <%= link_to (image_tag "all-user.png"), users_path,class: "nav-link"%>
+         <%= link_to (image_tag "all-user.png"), users_path,class: "nav-link", data: { toggle: 'tooltip', title: "All users", placement: "bottom"} %>
         </div>
 
         <% if user_signed_in? %>
           <div class="nav-item active ">
             <%= link_to (image_tag "logout.png"),  destroy_user_session_path, method: :delete,
-              class: "nav-link"%>
+              class: "nav-link", data: { toggle: 'tooltip', title: "Logout", placement: "bottom"}%>
           </div>
+          <% if current_user.is_admin? %>
+            <div class="nav-item active ">
+              <%= link_to (image_tag "admin-user.png"), admin_root_path,
+                class: "nav-link", data: { toggle: 'tooltip', title: "Admin", placement: "bottom"}%>
+            </div>
+          <% end %>
 
           <div class="nav-item active edit_user ">
             <span class="nav-link" data-toggle="modal", data-target='#edituser'>
-              <%= link_to (image_tag "edit-user.png"), "#" %>
+              <%= link_to (image_tag "edit-user.png"),
+               "#", data: { toggle: 'tooltip', title: "Edit users", placement: "bottom"} %>
             </span>
           </div>
         <% else %>
           <div class="nav-item active btn_signup ">
-            <%= link_to (image_tag "signup.png"), sign_up_path,class: "nav-link"%>
+            <%= link_to (image_tag "signup.png"), sign_up_path,class: "nav-link", data: { toggle: 'tooltip', title: "Signup", placement: "bottom"}%>
           </div>
 
           <div class="nav-item active btn_login ">
-            <%= link_to (image_tag "login.png"), sign_in_path,class: "nav-link"%>
+            <%= link_to (image_tag "login.png"), sign_in_path,class: "nav-link", data: { toggle: 'tooltip', title: "Login", placement: "bottom"}%>
           </div>
 
           <div class="nav-item active ">
-            <%= link_to (image_tag "login-face.png"),"#",
-              class: "nav-link" %>
+            <%= link_to (image_tag "login-face.png"), user_facebook_omniauth_authorize_path,
+              class: "nav-link", data: { toggle: 'tooltip', title: "Facebook", placement: "bottom"} %>
           </div>
         <% end %>
       </div>

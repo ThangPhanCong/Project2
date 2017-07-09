@@ -14,7 +14,12 @@ jQuery(document).ready(function($) {
     $('#newpost').modal('show');
   });
 
-  $('body').on('submit', '.edit_post', function(event) {
+   $('body').on('click', '.edit-post', function(event) {
+    event.preventDefault();
+    $('#' + 'modal-edit-post-' + $(this).attr('id')).modal('show');
+  });
+
+  $('body').on('submit', '.edit-ajax', function(event) {
     event.preventDefault();
     var self = $(this);
     var params = $(this).serialize();
@@ -29,8 +34,6 @@ jQuery(document).ready(function($) {
         self.closest('.feed-post').find('.post-title').text(response.title);
         self.closest('.feed-post').find('.post-content').text(response.content);
         $(":submit").removeAttr("disabled");
-        // $('.modal').hide();
-        // $('.modal-backdrop').remove();
       }
     })
     .fail(function() {
@@ -45,22 +48,29 @@ jQuery(document).ready(function($) {
   $('body').on('submit', '.edit_user', function(event) {
     event.preventDefault();
     var self = $(this);
-    var params_edit_user = $(this).serialize();
+    var formData = new FormData();
+    console.log($('.edit_user #user_avatar'));
+    formData.append('user[avatar]', $('.edit_user #user_avatar')[0].files[0]);
+    formData.append('user[name]', $('.edit_user #user_name').val());
+    formData.append('user[email]', $('.edit_user #user_email').val());
+
     $.ajax({
       url: self.attr('action'),
-      type: 'put',
-      dataType: 'json',
-      data: params_edit_user,
+      data: formData,
+      cache: false,
+      contentType: false,
+      processData: false,
+      type: 'PUT'
     })
     .done(function(response) {
       if (response.status == 'success') {
         sweetAlert("Update successfully!");
         $('#edituser').modal('hide');
-
       }
     })
     .fail(function() {
-      console.log("error");
+      sweetAlert("Update successfully!");
+      $('#edituser').modal('hide');
     })
     .always(function() {
       console.log("complete");

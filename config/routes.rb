@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   root to: "static_pages#home"
 
   devise_for :users, controllers: {
+    omniauth_callbacks: "users/omniauth_callbacks",
     sessions: "users/sessions",
     registrations: "users/registrations"
   }
@@ -16,6 +17,15 @@ Rails.application.routes.draw do
 
   resources :posts do
     resources :comments
+  end
+
+  namespace :admin do
+    root to: "admin#index"
+    resources :posts do
+      resources :comments, :only => [:create, :destroy]
+    end
+
+    resources :users
   end
 
   resources :users do
